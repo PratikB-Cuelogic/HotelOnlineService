@@ -9,10 +9,10 @@
     <!-- Google jquery cdn -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
-      function makeToast(){
-        alert("dfsafs");
-        document.getElementById("notice").style.visibility = "visible";
-      }
+      $('.dropdown-button').dropdown({
+          hover: true, // Activate on hover
+        }
+      );
     </script>
     <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>          
@@ -21,14 +21,7 @@
   </head>
 
   <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Logo</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <%= render "/layouts/header_auth" %>  
-        </ul>
-      </div>
-    </nav>      
+   <%= render "/layouts/header_auth" %>     
          <%= render "/layouts/messages" %>  
     <%= yield %>
   </body>

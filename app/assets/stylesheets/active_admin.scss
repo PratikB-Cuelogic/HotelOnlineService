@@ -6,10 +6,10 @@
 //
 // For example, to change the sidebar width:
 // $sidebar-width: 242px;
-$primary-color: #5E6469;
-// Active Admin's got SASS!
+
 @import "active_admin/mixins";
 @import "active_admin/base";
+
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
@@ -29,3 +29,14 @@ li#admin_users{
 	width: 0%;
 	font-size: 0em;
 }
+
+body.logged_out h2{
+background-image: linear-gradient(180deg, #00acc1,  #0097a7);
+}
+
+div#login h2{
+	padding: 2%;
+	font-size: 16px;
+	font-weight: bold;
+}
+

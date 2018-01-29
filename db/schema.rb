@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129084442) do
+ActiveRecord::Schema.define(version: 20180129101914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 20180129084442) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "hotels", force: :cascade do |t|
+    t.string "name"
+    t.text "location"
+    t.text "description"
+    t.float "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -66,4 +75,16 @@ ActiveRecord::Schema.define(version: 20180129084442) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.integer "price"
+    t.integer "no_of_bedroom"
+    t.text "description"
+    t.date "inactive"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "hotel_id"
+    t.index ["hotel_id"], name: "index_rooms_on_hotel_id"
+  end
+
+  add_foreign_key "rooms", "hotels"
 end

@@ -1,8 +1,23 @@
-<% if member_signed_in? %>
- <li><%= link_to "Log out", destroy_member_session_path, :method => :delete  %></li>
- <li><%= link_to "Edit Profile", edit_member_registration_path %></li>
- <%else%>
-<li><a href="/members/sign_up">Registration</a></li>
-<li><a href="/members/sign_in">User Log in</a></li>
-<li><a href="/admin">Admin Log in</a></li>
-<% end %>
+<nav>
+	<div class="nav-wrapper #00acc1 cyan darken-1">
+    	<a href="#" class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if member_signed_in? %>
+  			<li><%= link_to "Log out", destroy_member_session_path, :method => :delete  %></li>
+  			<li><%= link_to "Edit Profile", edit_member_registration_path %></li>
+		  <%else%>
+  			<li><a href="/members/sign_up">Registration</a></li>
+			<!-- <li><a href="/members/sign_in">User Login</a></li>
+  			<li><a href="/admin">Admin Login</a></li> -->
+			  <li><a class='dropdown-button' data-beloworigin="true" href='' data-activates='dropdown1'>Login</a></li>
+			  <ul id='dropdown1' class='dropdown-content'>
+				  <li><a href="/members/sign_in">User</a></li>
+				  <li><a href="/admin">Admin</a></li>
+			  </ul>
+			
+		  <% end %>
+        </ul>
+    </div>
+</nav>   
+
+
