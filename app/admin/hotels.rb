@@ -12,4 +12,14 @@ ActiveAdmin.register Hotel do
 #   permitted
 # end
   permit_params :name, :rating, :location, :description
+
+  form do |f|
+    f.inputs "New" do
+      f.input :name
+      f.input :location
+      f.input :description
+      f.input :rating, as: :number, min: 0,max: 5
+    end
+    f.actions
+  end
 end

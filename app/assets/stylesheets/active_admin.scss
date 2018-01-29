@@ -6,9 +6,10 @@
 //
 // For example, to change the sidebar width:
 // $sidebar-width: 242px;
-
+$am-theme-primary: #00acc1;
 @import "active_admin/mixins";
 @import "active_admin/base";
+//@import "active_material";
 
 
 // Overriding any non-variable SASS must be done after the fact.
@@ -28,6 +29,7 @@ li#admin_users{
 	visibility: hidden !important;
 	width: 0%;
 	font-size: 0em;
+	line-height: 0;
 }
 
 body.logged_out h2{
@@ -40,3 +42,10 @@ div#login h2{
 	font-weight: bold;
 }
 
+.message{
+	display:none;
+}
+
+.inline-errors{
+	color:red;
+}

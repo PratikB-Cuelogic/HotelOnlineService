@@ -9,7 +9,7 @@ RSpec.describe Member, type: :model do
     context 'validation tests' do
 	  	it 'ensures first name presence' do 
 	  		member=Member.new(lastname: 'last',email: 'scanc07@gmail.com', mobile_no: '9975573222', password: 'Scanc07').save
-	  		expect(member).to eql(true)
+	  		expect(member).to eql(false)
 	  	end
 
 	  	it 'ensures last name presence' do 
