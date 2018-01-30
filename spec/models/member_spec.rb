@@ -17,17 +17,6 @@ RSpec.describe Member, type: :model do
 	  		expect(member).to eql(false)
 	    end
 
-	    it 'is invalid without a firstname' do 
-	  		member=Member.create(firstname: '', lastname: 'first',email: 'scanc07@gmail.com', mobile_no: '9975573222', password: 'Scanc07')
-	  		member.save
-	  		expect(member).to be_valid
-	    end
-
-	    it 'ensures valid email input' do 
-	  		@member.email="scanc07@gmail"
-	  		expect(member.email).to match(/\A[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9]+(\.[a-z0-9]+)*(\.[a-z]{2,3})\z/)
-	    end
-
 	    it 'ensures valid mobile number input' do
 	  		@member.mobile_no="997554"
 	  		expect(member.mobile_no).to match(/\A[0-9]{10}\z/)
@@ -49,10 +38,10 @@ RSpec.describe Member, type: :model do
 	  		expect(member.email).to match(/\A[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9]+(\.[a-z0-9]+)*(\.[a-z]{2,3})\z/)
 	    end
 
-		it 'contain valid mobile number input' do 
+		it 'contains valid mobile number input' do 
 			member=Member.create()
-	  		member.mobile_no="99755732222"
-	  		expect(member.mobile_no).to match(/\A[0-9]{10}\z/)
+	  		member.mobile_no="9975573222"
+	  		expect(member.mobile_no).to match(/\A[0-9][0-9]{10}\z/)
 	    end
 	end
 end
