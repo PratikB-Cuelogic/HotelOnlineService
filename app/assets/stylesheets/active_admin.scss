@@ -42,10 +42,25 @@ div#login h2{
 	font-weight: bold;
 }
 
-.message{
+.inline-errors{
 	display:none;
 }
 
-.inline-errors{
-	color:red;
+.message{
+	color:#932419;
+	margin-left: 20%;
+	width: 100%;
+	margin-bottom: 1%;
+}
+
+select{
+	float: left;
+	display: block;
+}
+#room_hotel_id_input,#room_no_of_bedroom_input{
+	margin-bottom: 1%;
+}
+
+#q_hotel_id{
+	margin-bottom: 4%;
 }

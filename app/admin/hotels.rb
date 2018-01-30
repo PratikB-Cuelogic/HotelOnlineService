@@ -13,6 +13,12 @@ ActiveAdmin.register Hotel do
 # end
   permit_params :name, :rating, :location, :description
 
+  filter :name
+  filter :location
+  filter :rating
+  filter :created_at
+  filter :updated_at
+
   form do |f|
     f.inputs "New" do
       f.input :name

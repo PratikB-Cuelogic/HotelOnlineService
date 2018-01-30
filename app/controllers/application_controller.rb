@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: update_attrs
   end
 
-  def after_sign_out_path_for(resource_or_scope)
+=begin  def after_sign_out_path_for(resource_or_scope)
   	puts "111111111111111111"
   	puts resource_or_scope
     if resource_or_scope == :user
@@ -23,6 +23,6 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
-
+=end
 
 end
