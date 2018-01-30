@@ -11,7 +11,7 @@ ActiveAdmin.register Hotel do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :name, :rating, :location, :description
+  permit_params :name, :rating, :location, :description, :image
 
   filter :name
   filter :location
@@ -25,6 +25,7 @@ ActiveAdmin.register Hotel do
       f.input :location
       f.input :description
       f.input :rating, as: :number, min: 0,max: 5
+      f.input :image, as: :file, input_html: { multiple: true }
     end
     f.actions
   end
