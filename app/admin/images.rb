@@ -5,7 +5,8 @@ ActiveAdmin.register Image do
 # permit_params :list, :of, :attributes, :on, :model
 #
 # or
-  permit_params :image,:imageable_type,:imageable_id
+  menu false
+  permit_params :image,:imageable_type,:imageable_id,image_attributes: [:image]
 # permit_params do
 #   permitted = [:permitted, :attributes]
 #   permitted << :other if params[:action] == 'create' && current_user.admin?

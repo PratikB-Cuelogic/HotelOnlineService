@@ -17,7 +17,7 @@ $am-theme-primary: #00acc1;
 //
 //   .status_tag { background: #6090DB; }
 
-.panel{
+/*.panel{
 	display: inline;
 }
 
@@ -41,7 +41,7 @@ div#login h2{
 	font-size: 16px;
 	font-weight: bold;
 }
-
+*/
 .inline-errors{
 	display:none;
 }
@@ -64,3 +64,5 @@ select{
 #q_hotel_id{
 	margin-bottom: 4%;
 }
+
+.polyform {display: none}
