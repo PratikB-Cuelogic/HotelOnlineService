@@ -12,13 +12,47 @@ ActiveAdmin.register Hotel do
 #   permitted
 # end
 
-controller do
-  def permitted_params
-     params.permit!
-   end
-end
+  controller do
+    def new
+      @hotel = Hotel.new
+    end
+    
+  def show
+    @hotel=Hotel.find(params[:id])
+  end
 
-  permit_params :name, :rating, :location, :description,image_attributes: [:image]
+    def create
+      @hotel = Hotel.create(post1_params)
+      if @hotel.update_attributes(post2_params)
+        redirect_to [:admin, @hotel]
+      else
+        render 'new'
+      end
+    end
+    
+    def update
+      @hotel = Hotel.find(params[:id])           
+      if @hotel.update_attributes(post2_params)
+        redirect_to [:admin, @hotel]
+      else
+        render 'edit'
+      end
+    end
+
+    private
+
+    def post1_params
+      puts "1111"
+      params.require(:hotel).permit(:name, :rating, :location, :description)
+    end
+
+    def post2_params
+      puts "222"
+      params.require(:hotel).permit(:name, :rating, :location, :description,images_attributes: [:id, :image, :image_cache, :_destroy])
+    end
+  end
+
+  #permit_params :name, :rating, :location, :description,images_attributes: [:image]
 
   filter :name
   filter :location
@@ -31,13 +65,16 @@ end
       f.input :name
       f.input :location
       f.input :description
-      f.input :rating, as: :number, min: 0,max: 5
+      f.input :rating, as: :number, min: 0,max: 5      
     end
-      f.has_many :images do |image|
-        image.inputs do          
-          image.input :image,as: :file
+      f.has_many :images do |i|
+        i.inputs do          
+          i.input :image,as: :file,:hint => i.object.image.present? \
+          ? image_tag(i.object.image.url)
+          : content_tag(:span, "not added yet"), class: 'image_size'
         end
       end
     f.actions
   end
 end
+

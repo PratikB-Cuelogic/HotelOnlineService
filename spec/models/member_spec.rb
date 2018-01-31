@@ -32,16 +32,5 @@ RSpec.describe Member, type: :model do
 	  		expect(member).to eql(true)
 	    end
 
-	    it 'contains valid email input' do 
-	    	member=Member.create()
-	  		member.email="scanc07@gmail.com"
-	  		expect(member.email).to match(/\A[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9]+(\.[a-z0-9]+)*(\.[a-z]{2,3})\z/)
-	    end
-
-		it 'contains valid mobile number input' do 
-			member=Member.create()
-	  		member.mobile_no="9975573222"
-	  		expect(member.mobile_no).to match(/\A[0-9][0-9]{10}\z/)
-	    end
 	end
 end
