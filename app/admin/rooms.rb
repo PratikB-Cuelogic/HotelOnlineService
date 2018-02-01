@@ -29,8 +29,8 @@ ActiveAdmin.register Room do
     end
 
     def create
-      @room = Room.create(post1_params)
-      if @room.update_attributes(post2_params)
+      @room = Room.create(room_params)
+      if @room.update_attributes(room_images_params)
         redirect_to [:admin, @room]
       else
         render 'new'
@@ -39,7 +39,7 @@ ActiveAdmin.register Room do
     
     def update
       @room = Room.find(params[:id])           
-      if @room.update_attributes(post2_params)
+      if @room.update_attributes(room_images_params)
         redirect_to [:admin, @room]
       else
         render 'edit'
@@ -48,12 +48,12 @@ ActiveAdmin.register Room do
 
     private
 
-    def post1_params
+    def room_params
       puts "1111"
       params.require(:room).permit(:price, :no_of_bedroom, :description, :inactive, :hotel_id)
     end
 
-    def post2_params
+    def room_images_params
       puts "222"
       params.require(:room).permit(:price, :no_of_bedroom, :description, :inactive, :hotel_id,images_attributes: [:id, :image, :image_cache, :_destroy])
     end

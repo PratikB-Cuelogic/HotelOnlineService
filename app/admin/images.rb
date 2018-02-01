@@ -51,13 +51,11 @@ ActiveAdmin.register Image do
      elsif i.imageable_type == "Hotel"
        hotel_obejct = Hotel.find(i.imageable_id)
        link_to hotel_obejct.name, admin_hotel_path(i.imageable_id)    
-      end
-    
+      end    
     end
     column "Created Date",:created_at
     column "Updated Date",:updated_at
     actions
   end
-
 
 end

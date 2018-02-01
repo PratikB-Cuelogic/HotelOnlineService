@@ -4,11 +4,9 @@ class Image < ApplicationRecord
   belongs_to :imageable, polymorphic: true 
   before_save :update_image_attributes
 
-  delegate :url, :size, :path, to: :image
-
+  #delegate :url, :size, :path, to: :image
   # Virtual attributes
-
-  alias_attribute :filename, :original_filename
+  #alias_attribute :filename, :original_filename
 
   def imageable_hotel
     puts "1111"
@@ -40,8 +38,6 @@ class Image < ApplicationRecord
   
   def update_image_attributes
     if image.present? && image_changed?
-      puts self.image
-      puts image.file.original_filename
       #self.image = image.file.original_filename
       #self.content_type = image.file.content_type
     end

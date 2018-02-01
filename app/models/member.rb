@@ -8,9 +8,9 @@ class Member < ApplicationRecord
   password_regex= /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}\z/ 
   mobile_regex=/\A[0-9]{10}\z/
   name_regex=/\A[a-z][a-zA-Z]+\z/
-  validates :firstname,:lastname, length: { in: 3..20 }, format: {with: name_regex, message: "contains only alphabets"}, :on => :create
-  validates :mobile_no , format: {with: mobile_regex},:on => :create
-  validates :email, format:{ with: email_regex}
-  validates :password, confirmation: true, :on => :signup
-  validates :password_confirmation, presence: true, :on => :signup
+  validates :firstname,:lastname, :presence => true, length: { in: 3..20 }, format: {with: name_regex, message: "contains only alphabets"}
+  validates :mobile_no, :presence => true, format: {with: mobile_regex}
+  #validates :email,:presence => true, format:{ with: email_regex}
+  validates :password, :presence => true
+  #validates :password_confirmation,:presence => true
 end

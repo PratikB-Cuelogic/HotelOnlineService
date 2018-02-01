@@ -22,8 +22,8 @@ ActiveAdmin.register Hotel do
   end
 
     def create
-      @hotel = Hotel.create(post1_params)
-      if @hotel.update_attributes(post2_params)
+      @hotel = Hotel.create(hotel_params)
+      if @hotel.update_attributes(hotel_images_params)
         redirect_to [:admin, @hotel]
       else
         render 'new'
@@ -32,7 +32,7 @@ ActiveAdmin.register Hotel do
     
     def update
       @hotel = Hotel.find(params[:id])           
-      if @hotel.update_attributes(post2_params)
+      if @hotel.update_attributes(hotel_images_params)
         redirect_to [:admin, @hotel]
       else
         render 'edit'
@@ -41,12 +41,12 @@ ActiveAdmin.register Hotel do
 
     private
 
-    def post1_params
+    def hotel_params
       puts "1111"
       params.require(:hotel).permit(:name, :rating, :location, :description)
     end
 
-    def post2_params
+    def hotel_images_params
       puts "222"
       params.require(:hotel).permit(:name, :rating, :location, :description,images_attributes: [:id, :image, :image_cache, :_destroy])
     end
