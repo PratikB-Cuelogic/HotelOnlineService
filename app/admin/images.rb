@@ -41,7 +41,7 @@ ActiveAdmin.register Image do
     selectable_column
     id_column
     column :image do |image_value|
-      image_tag image_value.image.url, class: 'image_size'
+      image_tag image_value.image.url(:thumb), class: 'image_size'
     end
     column :imageable_type
     column "Imageable" do |i|

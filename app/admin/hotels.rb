@@ -43,12 +43,12 @@ ActiveAdmin.register Hotel do
 
     def hotel_params
       puts "1111"
-      params.require(:hotel).permit(:name, :rating, :location, :description)
+      params.require(:hotel).permit(:name, :rating, :state, :city, :location, :description)
     end
 
     def hotel_images_params
       puts "222"
-      params.require(:hotel).permit(:name, :rating, :location, :description,images_attributes: [:id, :image, :image_cache, :_destroy])
+      params.require(:hotel).permit(:name, :rating, :state, :city, :location, :description,images_attributes: [:id, :image, :image_cache, :_destroy])
     end
   end
 
@@ -63,15 +63,15 @@ ActiveAdmin.register Hotel do
   form  html: { multipart: true } do |f|
     f.inputs "New" do
       f.input :name
+      f.input :state
+      f.input :city
       f.input :location
       f.input :description
       f.input :rating, as: :number, min: 0,max: 5      
     end
       f.has_many :images do |i|
         i.inputs do          
-          i.input :image,as: :file,:hint => i.object.image.present? \
-          ? image_tag(i.object.image.url)
-          : content_tag(:span, "not added yet"), class: 'image_size'
+          i.input :image,as: :file,:hint => i.object.image.present? ? image_tag(i.object.image.url) : content_tag(:span, "not added yet"), class: 'image_size'
         end
       end
     f.actions

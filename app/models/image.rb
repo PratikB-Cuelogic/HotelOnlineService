@@ -1,9 +1,10 @@
+require 'file_size_validator' 
 class Image < ApplicationRecord
   before_validation :assign_imageable
-  mount_uploader :image
+  mount_uploader :image, ImageUploader
   belongs_to :imageable, polymorphic: true 
   before_save :update_image_attributes
-
+  validates :image,  :file_size => { :maximum => 2.0.megabytes.to_i  } 
   #delegate :url, :size, :path, to: :image
   # Virtual attributes
   #alias_attribute :filename, :original_filename

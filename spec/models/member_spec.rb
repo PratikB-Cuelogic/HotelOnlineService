@@ -2,44 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Member, type: :model do
 
-=begin  before(:each) do
- 	@member =Member.create();
-  end 		
-
-  context 'validation tests' do
-    it 'ensures first name presence' do 
-	  member = Member.new(lastname: 'last',email: 'scanc07@gmail.com', mobile_no: '9975573222', password: 'Scanc07').save
-	  expect(member).to eql(false)
-	end
-
-	it 'ensures last name presence' do 
-	  member=Member.new(firstname: 'last',email: 'scanc07@gmail.com', mobile_no: '9975573222', password: 'Scanc07').save
-	  expect(member).to eql(false)
-	end
-
-	it 'ensures valid mobile number input' do
-	  @member.mobile_no="997554"
-	  expect(member.mobile_no).to match(/\A[0-9]{10}\z/)
-	end
-
-    it 'ensures mobile number presence' do 
-  		member=Member.new(firstname: 'last',email: 'scanc07@gmail.com',lastname: 'first', password: 'Scanc07').save
-  		expect(member).to eql(false)
-    end
-
-    it 'should save successfully' do 
-  		member=Member.new(firstname: 'last',lastname: 'first',email: 'scanc07@gmail.com', mobile_no: '9975573222', password: 'Scanc07').save
-  		expect(member).to eql(true)
-    end
-  end
-=end
-  #let(:member){ Member.create()}
   subject { described_class.new(firstname: 'last',lastname: 'first',email: 'scanc07@gmail.com', mobile_no: '9975573222', password: 'Scanc07') }
 
   context 'Validation' do
   	name_regex=/\A[a-z][a-zA-Z]+\z/
 
-    it "is valid with valid attributes" do
+    it "is valid with all valid attributes" do
       expect(subject).to be_valid
     end
 
@@ -47,6 +15,18 @@ RSpec.describe Member, type: :model do
       subject.firstname = nil
       subject.save      
       expect(subject.errors.messages[:firstname][0]).to eql("can't be blank")
+    end
+
+    it "is not valid when firstname is small than 3characters" do
+      subject.firstname = 'ss'
+      subject.save      
+      expect(subject.errors.messages[:firstname][0]).to eql("is too short (minimum is 3 characters)")
+    end
+
+    it "is not valid when firstname contains more than 20characters" do
+      subject.firstname = 'sssssssssssssssssssssssssssssssssssssssssssssssssssssss'
+      subject.save      
+      expect(subject.errors.messages[:firstname][0]).to eql("is too long (maximum is 20 characters)")
     end
 
     it "is not valid when firstname contains digits" do
@@ -64,7 +44,6 @@ RSpec.describe Member, type: :model do
     it "is not valid when lastname contains digits" do
       subject.lastname = 123
       subject.save
-      #puts subject.errors.messages[:lastname]
       expect(subject.errors.messages[:lastname][0]).to eql("contains only alphabets")
   	end
 
@@ -92,6 +71,12 @@ RSpec.describe Member, type: :model do
       expect(subject.errors.messages[:mobile_no][0]).to eql("is invalid")
     end
 
+    it "is valid with a proper mobile number input" do
+      subject.mobile_no = 9975573222
+      subject.save
+      expect(subject.errors.messages[:mobile_no][0]).to eql(nil)
+    end
+
     it "is not valid without a password" do
       subject.password = nil
       subject.save
@@ -109,14 +94,14 @@ RSpec.describe Member, type: :model do
       subject.save
       expect(subject.errors.messages[:email][0]).to eql(nil)
     end    
+  end
 
-    it "is valid with an proper email input" do
-      subject.email = "scanc@"
+  context 'Exception' do
+    it "raised when email input is invalid" do
+     subject.email = "scanc@"
       #puts assert_raises(Exception) { subject.save! }
-      lambda { subject.save! }.should raise_error
-
-	  #assert_equal( "Email is invalid", exception.message )           
-    end
+      expect {raise subject.save! }.to raise_error(ActiveRecord::RecordInvalid ,'Validation failed: Email is invalid')
+    end  	
   end
 
 end
