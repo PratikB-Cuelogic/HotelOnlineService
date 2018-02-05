@@ -1,17 +1,5 @@
 ActiveAdmin.register Hotel do
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
-
+  
   controller do
     def new
       @hotel = Hotel.new
@@ -59,19 +47,25 @@ ActiveAdmin.register Hotel do
   filter :rating
   filter :created_at
   filter :updated_at
+  
+  state=["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu & Kashmir","Karnataka","Kerala","Madhya Pradesh",
+"Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Orissa","Punjab","Rajasthan","Sikkim","Tamil Nadu","Tripura","Uttar Pradesh","West Bengal","Chhattisgarh","Uttarakhand","Jharkhand","Telangana"]
+  
+  cities= ["Agra","Ahmedabad","Ajmer","Aligarh","Allahabad","Ambattur","Amravati","Amritsar","Asansol","Aurangabad","Bangalore","Bareilly","Belgaum""Bhavnagar","Bhilai Nagar","Bhopal","Bhiwandi","Bikaner","Bhubaneswar","Chandigarh","Chennai","Coimbatore","Cuttack","Dehradun","Delhi","Dhanbad","Durgapur","Faridabad","Firozabad","Gaya","Ghaziabad","Gorakhpur","Gulbarga","Guntur","Gurgaon","Guwahati","Gwalior","Haora","Hubli and Dharwad","Hyderabad","Indore","Jabalpur","Jaipur","Jalandhar","Jalgaon","Jammu","Jamnagar","Jamshedpur","Jhansi","Jodhpur","Kalyan & Dombivali","Kanpur","Kochi","Kolapur","Kolkata","Kota","Loni","Lucknow","Ludhiana","Madurai","Maheshtala","Malegoan","Mangalore","Meerut",
+"Mira and Bhayander","Moradabad","Mumbai","Mysore","Nagpur","Nanded Waghala","Nashik","Navi Mumbai","Nellore","Noida","Patna","Pimpri & Chinchwad","Pune","Raipur","Rajkot","Ranchi","Saharanpur","Salem","Sangli Miraj Kupwad","Siliguri","Solapur","Srinagar","Surat","Thane","Thiruvananthapuram","Tiruchirappalli","Tirunelveli","Udaipur","Ujjain","Ulhasnagar","Vadodara","Varanasi","Vasai Virar","Vijayawada","Visakhapatnam","Warangal",]
 
   form  html: { multipart: true } do |f|
     f.inputs "New" do
       f.input :name
-      f.input :state
-      f.input :city
+      f.input :state, as: :select, collection: state
+      f.input :city, as: :select, collection: cities
       f.input :location
       f.input :description
       f.input :rating, as: :number, min: 0,max: 5      
     end
       f.has_many :images do |i|
         i.inputs do          
-          i.input :image,as: :file,:hint => i.object.image.present? ? image_tag(i.object.image.url) : content_tag(:span, "not added yet"), class: 'image_size'
+          i.input :image,as: :file,:hint => i.object.image.present? ? image_tag(i.object.image.url) : content_tag(:span, "not added yet"), class: 'image_size' , :actions => :edit
         end
       end
     f.actions

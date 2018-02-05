@@ -59,7 +59,7 @@ select{
 	float: left;
 	display: block;
 }
-#room_hotel_id_input,#room_no_of_bedroom_input{
+#room_hotel_id_input,#room_no_of_bedroom_input,#hotel_state_input{
 	margin-bottom: 1%;
 }
 
@@ -67,6 +67,9 @@ select{
 	margin-bottom: 4%;
 }
 
+#hotel_location_input{
+	padding-top: 2.4%;
+}
 input[type="file" i],.inline-hints{
 	padding-left: 0%;
 }

@@ -100,7 +100,7 @@ RSpec.describe Member, type: :model do
     it "raised when email input is invalid" do
      subject.email = "scanc@"
       #puts assert_raises(Exception) { subject.save! }
-      expect {raise subject.save! }.to raise_error(ActiveRecord::RecordInvalid ,'Validation failed: Email is invalid')
+      expect {raise subject.save! }.to raise_error(ActiveRecord::RecordInvalid ,'Validation failed: Email is invalid, Email is invalid')
     end  	
   end
 

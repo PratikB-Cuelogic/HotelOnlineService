@@ -78,6 +78,8 @@ GEM
       mime-types (>= 1.16)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
+    city-state (0.0.13)
+      rubyzip (~> 1.1)
     client_side_validations (11.0.0)
       jquery-rails (~> 4.3)
       js_regex (~> 2.1)
@@ -290,6 +292,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   carrierwave
+  city-state
   client_side_validations
   coffee-rails (~> 4.2)
   devise
