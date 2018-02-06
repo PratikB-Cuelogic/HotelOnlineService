@@ -9,10 +9,15 @@
     <!-- Google jquery cdn -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
-      $('.dropdown-button').dropdown({
-          hover: true, // Activate on hover
-        }
-      );
+        $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15, // Creates a dropdown of 15 years to control year,
+        today: 'Today',
+        clear: 'Clear',
+        close: 'Ok',
+        closeOnSelect: false,
+        min: 'Today'
+      });
     </script>
     <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>          
@@ -22,7 +27,8 @@
 
   <body>
    <%= render "/layouts/header_auth" %>     
-         <%= render "/layouts/messages" %>  
+   <%= render "/layouts/messages" %>
+   <%= render "/layouts/search" %>
     <%= yield %>
   </body>
 </html>

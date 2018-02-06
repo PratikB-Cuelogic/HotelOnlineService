@@ -1,17 +1,21 @@
 <nav>
-	<div class="nav-wrapper #00acc1 cyan darken-1">
-    	<a href="#" class="brand-logo">Logo</a>
+  <div class="container">
+    <div class="nav-wrapper">
+    	<a href="localhost:3000" class="brand-logo">
+        <img class="logo">
+      </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if member_signed_in? %>
-  			<li><%= link_to "Log out", destroy_member_session_path, :method => :delete  %></li>
-  			<li><%= link_to "Edit Profile", edit_member_registration_path %></li>
-		  <%else%>
-  			<li><a href="/members/sign_up">Registration</a></li>
-			<li><a href="/members/sign_in">User Login</a></li>
-  			<li><a href="/admin">Admin Login</a></li>
-		  <% end %>
+    		<li class="nav-link"><%= link_to "Log out", destroy_member_session_path, :method => :delete  %></li>
+    		<li class="nav-link"><%= link_to "Edit Profile", edit_member_registration_path %></li>
+      <%else%>
+    		<li class="nav-link"><a href="/members/sign_up">Registration</a></li>
+    	<li class="nav-link"><a href="/members/sign_in">User Login</a></li>
+    		<li class="nav-link"><a href="/admin">Admin Login</a></li>
+      <% end %>
         </ul>
     </div>
+  </div>
 </nav>   
 
 
