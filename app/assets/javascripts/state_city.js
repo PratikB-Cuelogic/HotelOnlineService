@@ -39,10 +39,10 @@ var roomList = [
 window.onload = function () {
 	
 	//Get html elements
-	var stateSel = document.getElementById("search_stateSel");	
+/*	var stateSel = document.getElementById("search_stateSel");	
 	var citySel = document.getElementById("search_citySel");
-	var roomSel = document.getElementById("search_roomSel");		
-	//Load state
+*/	var roomSel = document.getElementById("search_roomSel");		
+/*	//Load state
 	for (var state in stateCityInfo) {
 		stateSel.options[stateSel.options.length] = new Option(state, state);
 	}
@@ -58,7 +58,7 @@ window.onload = function () {
 			citySel.options[citySel.options.length] = new Option(city[i], city[i]);
 		}
 	}
-
+*/
 	for (var i = 0; i < roomList.length; i++) {
 		roomSel.options[roomSel.options.length] = new Option(roomList[i], roomList[i]);
 	}

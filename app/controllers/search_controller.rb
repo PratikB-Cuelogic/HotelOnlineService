@@ -9,8 +9,11 @@ class SearchController < ApplicationController
 
   def search
   	render plain: params[:search].inspect
-  	@search=SearchService.new(params[:search])
+    @search = Hotel.search(params[:search])
+    puts @search.inspect
+=begin  	@search=SearchService.new(params[:search])
     @result=@search.search_by_all
+=end
   end
 
   def search_by_city(city)

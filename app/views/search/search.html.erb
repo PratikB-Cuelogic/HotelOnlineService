@@ -4,20 +4,14 @@
 		<div class="search">
 			<div class="section-1" >
 				<ul class="clearfix" >
-					<li class="value-1">
-					   <%= label_tag :state, nil, :class => 'search-content' %>
-					   <%= select_tag 'search[stateSel]', options_for_select([""]), :required => true %>	
+					<li class="value-1" style="width: 33.32%">
+						<label class="search-content">State / City / Hotel Name</label>					   
+					   <%= text_field :search, :hotel_city_state , :required => true, :placeholder => 'Gujrat / Vadodra / Subhash'%>
 					   <div id="error-div" class="warning">
 					   		<label >Can't be Empty</label>
 					   </div>
 					</li>
-					<li class="value-2">
-						<%= label_tag :city, nil, :class => 'search-content' %>						
-					   <%= select_tag 'search[citySel]', options_for_select([""]) %>						
-					   <div id="error-div" class="warning">
-					   		<label >Can't be Empty</label>
-					   </div>
-					</li>
+
 					<li class="value-3">
 						<%= label_tag :check_in, nil, :class => 'search-content' %>
 						<%= date_field :search, :checkinSel , :class => 'datepicker', :required => true, :min => Date.today, :value => Date.today %>
