@@ -3,7 +3,7 @@ class Member < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  has_many :room_bookings
   email_regex= /\A[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9]+(\.[a-z0-9]+)*(\.[a-z]{2,3})\z/
   password_regex= /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}\z/ 
   mobile_regex=/\A[0-9]{10}\z/

@@ -1,0 +1,49 @@
+<div class="container">
+	<h1 class="hotel-title">Book on India's Largest Hotel Network</h1>
+	<%= form_for :search, url: search_search_path, method: "get" do |f| %>
+		<div class="search">
+			<div class="section-1" >
+				<ul class="clearfix" >
+					<li class="value-1">
+					   <%= label_tag :state, nil, :class => 'search-content' %>
+					   <%= select_tag 'search[stateSel]', options_for_select([""]), :required => true %>	
+					   <div id="error-div" class="warning">
+					   		<label >Can't be Empty</label>
+					   </div>
+					</li>
+					<li class="value-2">
+						<%= label_tag :city, nil, :class => 'search-content' %>						
+					   <%= select_tag 'search[citySel]', options_for_select([""]) %>						
+					   <div id="error-div" class="warning">
+					   		<label >Can't be Empty</label>
+					   </div>
+					</li>
+					<li class="value-3">
+						<%= label_tag :check_in, nil, :class => 'search-content' %>
+						<%= date_field :search, :checkinSel , :class => 'datepicker', :required => true, :min => Date.today, :value => Date.today %>
+					   <div id="error-div" class="warning">
+					   		<label >Can't be Empty</label>
+					   </div>
+					</li>
+					<li class="value-4">
+						<%= label_tag :check_out, nil, :class => 'search-content' %>
+						<%= date_field :search, :checkoutSel , :class => 'datepicker', :required => true, :min => Date.today+1, :value => Date.today+1  %>
+					   <div id="error-div" class="warning">
+					   		<label >Can't be Empty</label>
+					   </div>
+					</li>
+					<li class="value-5">
+						<%= label_tag :rooms, nil, :class => 'search-content' %>
+						<%= select_tag 'search[roomSel]', options_for_select([]), :required => true%>		
+					   <div id="error-div" class="warning">
+					   		<label >Can't be Empty</label>
+					   </div>								
+					</li>
+					<li class="value-6"><label class="search-content">
+					<input type="submit" value="search" class="search-button">
+					</label></li>
+				</ul>
+			</div>
+	 	</div>
+ 	<% end %>
+</div>

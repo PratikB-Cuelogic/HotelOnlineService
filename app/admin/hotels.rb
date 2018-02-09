@@ -57,7 +57,7 @@ ActiveAdmin.register Hotel do
   form  html: { multipart: true } do |f|
     f.inputs "New" do
       f.input :name
-      f.input :state, as: :select, collection: state
+      f.input :state, as: :select, collection: []
       f.input :city, as: :select, collection: cities
       f.input :location
       f.input :description

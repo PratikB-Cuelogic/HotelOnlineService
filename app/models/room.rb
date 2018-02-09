@@ -1,6 +1,7 @@
 class Room < ApplicationRecord
 belongs_to :hotel
 has_many :images, as: :imageable, dependent: :destroy
+has_many :bookings, through: :room_booking
 validates :price, presence: true,  numericality: {  :only_integer => true ,  
 													:greater_than_or_equal_to => 1,
 													:less_than_or_equal_to => 99999,

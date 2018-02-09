@@ -25,9 +25,7 @@ sup{
 	color: red
 }
 
-.logo{
-	background-image: url("logo.jpg");
-}
+
 
 ul#nav-mobile.right.hide-on-med-and-down{
 	font-weight: 400;
@@ -38,8 +36,8 @@ ul#nav-mobile.right.hide-on-med-and-down{
 body{
 	background-image: url("background.jpg");
 	background-repeat: no-repeat;
-    height: 585px;
-    max-height: 585px;
+    background-size: contain;
+    background-color: #f4f6f8
 }
 
 nav{
@@ -48,9 +46,14 @@ nav{
 	box-shadow: 0 0 0 0;
 }
 
+nav .brand-logo {
+    position: relative;
+}
+
 .container{
 	width: 80%;
 	margin: auto;
+    overflow: hidden;
 }
 
 .notice{
@@ -67,17 +70,15 @@ select{
 	outline-color: unset;
 }
 
-select .state-select{
-	margin: 0;
-}
+
 
 .search{
     width: 100%;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     border-radius: 0 0 3px 3px;
     background: transparent;
-    border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 22px;
+	border-bottom-right-radius: 22px;
 }
 
 .clearfix{
@@ -150,4 +151,87 @@ input[type=text]:not(.browser-default){
 	font-size: 1.85714em;
 	text-align: center;
 	color: #fff;
+    margin-top: 50px;
 }
+
+
+#boxes{
+    margin-top: 100px;
+}
+
+#boxes .box{
+    float: left;
+    width: 29.33%;
+    margin: 2%;
+    text-align: center;
+    background-color: #f4f6f8;
+    border-radius: 5px 5px 0 0;
+}
+
+#boxes .box:hover{
+    background-color: #fff;
+    box-shadow: 0px 0px 20px #000000;
+    z-index: 2;
+    transition: all 0.5s ease;
+    transform: scale(1.05);
+}
+
+#boxes .box img{ 
+    width: 100%;
+}
+
+#boxes .box h3{
+    font-size: 1.7rem;
+    margin: 10px;
+}
+
+#boxes .box h3 a{
+    color: #333638
+}
+
+.logo img{ 
+    width: 40%;
+    background-size: contain;
+}
+
+
+#search_citySel,#search_stateSel,#search_roomSel{
+    margin-bottom: 10px;
+}
+
+div#error-div{
+    display: none;
+    position: absolute;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+    background-color: #f4f6f8;
+    font-weight: bold;
+    border: 1px solid #d02518;
+    animation: fadeinout 4s linear forwards;
+}
+
+div#error-div:before{
+    content: "";
+    position: absolute;
+    bottom: 42px;
+    left: 50%;
+    border-bottom: 8px solid #d02518;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    margin-left: -8px;
+}
+
+div#error-div label{
+    font-size: 14px;
+    font-weight: 400;
+    color: #d02518;
+}
+
+select:focus{
+    outline: none;
+}
+
+
+input::-webkit-inner-spin-button { display: none; }
+input::-webkit-calendar-picker-indicator {  }
