@@ -13,14 +13,14 @@
 					</li>
  					<li class="value-3">
 						<%= f.label :check_in, 'Checkin', :class => 'search-content' %>
-						<%= f.date_field  :checkinSel , :class => 'datepicker', :required => true, :min => Date.today, :value => Date.today %>
+						<%= f.date_field  :checkin_eq , :class => 'datepicker', :required => true, :min => Date.today, :value => Date.today %>
 					   <div id="error-div" class="warning">
 					   		<label >Can't be Empty</label>
 					   </div>
 					</li>
 					<li class="value-4">
 						<%= f.label :check_out, "Checkout", :class => 'search-content' %>
-						<%= f.date_field  :checkoutSel , :class => 'datepicker', :required => true, :min => Date.today+1, :value => Date.today+1  %>
+						<%= f.date_field  :checkout_not_eq , :class => 'datepicker', :required => true, :min => Date.today+1, :value => Date.today+1  %>
 					   <div id="error-div" class="warning">
 					   		<label >Can't be Empty</label>
 					   </div>
