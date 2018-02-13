@@ -31,7 +31,7 @@ var stateCityInfo = {
 }
 
 var roomList = [
-"1 Room","2 Rooms","3 Rooms"
+"1","2","3"
 /*"4 Rooms","5 Rooms","6 Rooms","7 Rooms","8 Rooms","9 Rooms","10 Rooms","11 Rooms","12 Rooms","13 Rooms","14 Rooms","15 Rooms","16 Rooms",*/
 ]	
 

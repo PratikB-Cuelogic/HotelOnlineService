@@ -1,4 +1,3 @@
 class Booking < ApplicationRecord
-has_many :room_bookings
-has_many :rooms, through: :room_bookings
+has_and_belongs_to_many :rooms
 end

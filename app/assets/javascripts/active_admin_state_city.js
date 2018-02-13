@@ -4,7 +4,7 @@ var stateCityInfo = {
 	"Arunachal Pradesh": [],
 	"Bihar": [],
 	"Goa": [],
-	"Gujarat": [ "Vadodara", "Surat" ],
+	"Gujarat": [ "Vadodara", "Surat", "Ahmedabad" ],
 	"Haryana": [],
 	"Himachal Pradesh": [],
 	"Jammu & Kashmir": [],
