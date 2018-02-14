@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
+  before_action :store_user_location!, if: :storable_location?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -11,17 +11,30 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: update_attrs
   end
 
-=begin  def after_sign_out_path_for(resource_or_scope)
-  	puts "111111111111111111"
-  	puts resource_or_scope
-    if resource_or_scope == :user
-      root_path
-    elsif resource_or_scope == :admin_users
-      'home/index'
-    else
-      root_path
-    end
+=begin  def after_sign_in_path_for(resource)
+    puts "fsdfsdf"
+    request.env['omniauth.origin'] || stored_location_for(resource) || home_index_url
   end
 =end
+  private
+    def storable_location?
+      puts "1111"
+      request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
+    end
+
+    def store_user_location!
+      puts "2222"
+      store_location_for(:member, request.fullpath)
+    end
+
+   def after_sign_in_path_for(resource_or_scope)
+     puts "3333"
+     stored_location_for(resource_or_scope) || super
+   end
+
+   def after_sign_out_path_for(resource_or_scope)
+     puts "4444"
+     request.referrer || super
+   end
 
 end

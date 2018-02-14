@@ -1,0 +1,26 @@
+<div class="container" style="padding-top: 4%">
+	<h3>Listing Rooms</h3>
+	<table>
+	<tr>
+	<th> Id  </th>
+	<th> Price  </th>
+	<th> Room Description  </th>
+	<th> No Of Bedroom </th>
+	</tr>
+	<% cache do %>
+		<% @rooms_page.each do |a|%>
+			<tr>
+			<td><%= a.id %></td>
+			<td><%= a.price.to_i %></td>
+			<td><%= a.description %></td>
+			<td><%= a.no_of_bedroom %></td>
+			<!-- <td><%= check_box_tag 'room_select[]', a.id , false %></td> -->
+			<td><%=check_box("room_select", "", {}, a.id, "no") %>
+			</tr>
+		<% end %>
+	<% end %>
+	</table>
+	<%= paginate @rooms_page %>
+	<button><a href="/search/search_list">Book Rooms</a></button>
+</div>
+<br>

@@ -1,42 +1,33 @@
-<div class="container">
-	<h1 class="hotel-title">Book on India's Largest Hotel Network</h1>
-	<%= form_tag(url: search_search_path, method: :get) do  %>
-		<div class="search">
-			<div class="section-1" >
-				<ul class="clearfix" >
-					<li class="value-1" style="width: 33.32%">
-					   <%= label  :hotel_or_city_or_state_cont %>
-					   <%= text_field  :search, :name_or_state_or_city , :required => true, :placeholder => 'Gujrat / Vadodra / Subhash'%>
-					   <div id="error-div" class="warning">
-					   		<label >Can't be Empty</label>
-					   </div>
-					</li>
- 					<li class="value-3">
-						<%= label :check_in, 'Checkin', :class => 'search-content' %>
-						<%= date_field  :search, :checkin , :class => 'datepicker', :required => true, :min => Date.today, :value => Date.today %>
-					   <div id="error-div" class="warning">
-					   		<label >Can't be Empty</label>
-					   </div>
-					</li>
-					<li class="value-4">
-						<%= label :check_out, "Checkout", :class => 'search-content' %>
-						<%= date_field  :search, :checkout , :class => 'datepicker', :required => true, :min => Date.today+1, :value => Date.today+1  %>
-					   <div id="error-div" class="warning">
-					   		<label >Can't be Empty</label>
-					   </div>
-					</li>
-					<li class="value-5">
-						<%= label :rooms, "Rooms", :class => 'search-content' %>
-						<%= select_tag :search, :roomSel, options_for_select([]), :required => true%>		
-					   <div id="error-div" class="warning">
-					   		<label >Can't be Empty</label>
-					   </div>								
-					</li>
-					<li class="value-6"><label class="search-content">
-					<input type="submit" value="search" class="search-button">
-					</label></li>
-				</ul>
-			</div>
-	 	</div>
- 	<% end %>
+
+<div class="container" style="padding-top: 4%">
+    <% if @res.empty? %>
+		<div class="hotel_list">
+			<span>Sorry, Hotels found</span>
+		</div>
+    <% else %>		
+		<h3>Listing Hotels</h3>
+		<table style="text-align: center;">
+		<tr>
+		<th> Hotel Name </th>
+		<th> State  </th>
+		<th> City  </th>
+		<th> Address  </th>
+		<th> Description  </th>
+		</tr>
+		<% cache do %>
+		<% @res.each do |a|%>
+		<tr>
+		<td><%= a.name %></td>
+		<td><%= a.state %></td>
+		<td><%= a.city %></td>
+		<td><%= a.location %></td>
+		<td><%= a.description %></td>
+		<td><%= link_to 'Show', search_path(a) %></td>
+		</tr>
+		<% end %>
+		<% end %>
+		</table>
+		<%= paginate @res %>
+	<% end%>
 </div>
+<br>

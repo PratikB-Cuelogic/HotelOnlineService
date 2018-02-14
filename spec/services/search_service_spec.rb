@@ -8,6 +8,7 @@ RSpec.describe SearchService do
     context 'when state is present' do
       context 'and when room is available on the given check-in check-out date' do
         it ' returns hotel list' do
+          
         end
       end
       context 'and when room is not available on the given check-in check-out date' do

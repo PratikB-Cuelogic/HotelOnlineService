@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :members
+  resources :search
   get 'home/index'
   get 'search/search'
-  get 'search/index'
+  post 'search/search_list'
   root 'home#index'
   as :admin_user do
   	delete 'logout', to: 'devise/sessions#destroy'

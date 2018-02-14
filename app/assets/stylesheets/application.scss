@@ -36,7 +36,6 @@ ul#nav-mobile.right.hide-on-med-and-down{
 body{
 	background-image: url("background.jpg");
 	background-repeat: no-repeat;
-    background-size: contain;
     background-color: #f4f6f8
 }
 
@@ -54,6 +53,7 @@ nav .brand-logo {
 	width: 80%;
 	margin: auto;
     overflow: hidden;
+    padding: 1.5%;
 }
 
 .notice{
@@ -235,3 +235,26 @@ select:focus{
 
 input::-webkit-inner-spin-button { display: none; }
 input::-webkit-calendar-picker-indicator {  }
+
+.pagination{
+    text-align: center;
+}
+
+.page,.current,.next,.last,.prev,.first{
+    margin-right: 1%;
+}
+
+.hotel_list{
+    margin-top: 10%;
+    width: 23%;
+    text-align: center;
+    background-color: #e2e2e2;
+    padding: 1.1%;
+    border: 1px solid red;
+    box-shadow: 5px 6px 25px #000;
+}
+
+input[type="checkbox"]:not(:checked),input[type="checkbox"]:checked{
+    opacity: 1;
+    pointer-events: visible;
+}

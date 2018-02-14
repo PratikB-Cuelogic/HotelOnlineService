@@ -41,7 +41,7 @@ window.onload = function () {
 	//Get html elements
 /*	var stateSel = document.getElementById("search_stateSel");	
 	var citySel = document.getElementById("search_citySel");
-*/	var roomSel = document.getElementById("q_roomSel");		
+*/	var roomSel = document.getElementById("search_roomSel");		
 /*	//Load state
 	for (var state in stateCityInfo) {
 		stateSel.options[stateSel.options.length] = new Option(state, state);
