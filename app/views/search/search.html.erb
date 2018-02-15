@@ -2,7 +2,7 @@
 <div class="container" style="padding-top: 4%">
     <% if @res.empty? %>
 		<div class="hotel_list">
-			<span>Sorry, Hotels found</span>
+			<span>Sorry, Hotels Not found</span>
 		</div>
     <% else %>		
 		<h3>Listing Hotels</h3>
@@ -14,17 +14,17 @@
 		<th> Address  </th>
 		<th> Description  </th>
 		</tr>
-		<% cache do %>
-		<% @res.each do |a|%>
-		<tr>
-		<td><%= a.name %></td>
-		<td><%= a.state %></td>
-		<td><%= a.city %></td>
-		<td><%= a.location %></td>
-		<td><%= a.description %></td>
-		<td><%= link_to 'Show', search_path(a) %></td>
-		</tr>
-		<% end %>
+		<% cache @res do %>
+			<% @res.each do |a|%>
+				<tr>
+				<td><%= a.name %></td>
+				<td><%= a.state %></td>
+				<td><%= a.city %></td>
+				<td><%= a.location %></td>
+				<td><%= a.description %></td>
+				<td><%= link_to 'Show', search_path(a) %></td>
+				</tr>
+			<% end %>
 		<% end %>
 		</table>
 		<%= paginate @res %>

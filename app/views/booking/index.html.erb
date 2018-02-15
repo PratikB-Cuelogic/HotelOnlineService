@@ -1,0 +1,50 @@
+<% if member_signed_in? %>
+	<div class="container">
+	<h4>Booking Rooms Confirmation </h4>
+	<h5>Hotel Details </h5>
+	<table style="text-align: center;">
+		<tr>
+		<th> Hotel Name </th>
+		<th> State  </th>
+		<th> City  </th>
+		<th> Address  </th>
+		</tr>
+		<% @hotel_details.each do |a|%>
+			<tr>
+			<td><%= a.name %></td>
+			<td><%= a.state %></td>
+			<td><%= a.city %></td>
+			<td><%= a.location %></td>
+			</tr>
+		<% end %>
+	</table>	
+	<h5>Rooms Details </h5>
+	<table style="text-align: center;">
+	<tr>
+	<th style="width: 30%"> Room Description  </th>
+	<th style="width: 20%"> No Of Bedroom </th>
+	<th> Price  </th>
+	</tr>
+	<% cache do %>
+		<% @rooms_details.each do |room|%>
+			<% room.each do |details|%>
+				<tr>
+				<td><%= details.description %></td>
+				<td><%= details.no_of_bedroom %></td>
+				<td><%= details.price.to_i %></td>
+				</tr>				
+			<% end %>
+<!-- 			<% room.sum(&:price) %> -->
+		<% end %>		
+	<tr>
+		<th> Total </th>
+		<th></th>
+		<td><%= @booking_price %></td>
+	</tr>
+	<% end %>
+	</table>
+</div>
+<br>
+<% else%>
+	<% controller.redirect_to new_member_session_path %>
+<% end %>

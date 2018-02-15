@@ -7,4 +7,9 @@ class Hotel < ApplicationRecord
   validates :location, presence: { message: "it should have proper Location details" }
   validates :state, :city, presence: { message: "can't be blank" }
   accepts_nested_attributes_for :images, allow_destroy: true
+
+  scope :name_state_city, -> (name){ where("((name ILIKE ? OR state ILIKE ?) OR city ILIKE ?)", "#{name}%", "#{name}%", "#{name}%")} 
+  scope :room_inactive, -> { joins(:rooms).where(rooms: { inactive: nil} )}
+  scope :room_id_not, ->  (query){ where.not( "rooms.id": query ) }
+  scope :id, ->(id){ where("id": id)}
 end

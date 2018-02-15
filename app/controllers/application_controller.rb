@@ -18,22 +18,18 @@ class ApplicationController < ActionController::Base
 =end
   private
     def storable_location?
-      puts "1111"
       request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
     end
 
     def store_user_location!
-      puts "2222"
       store_location_for(:member, request.fullpath)
     end
 
    def after_sign_in_path_for(resource_or_scope)
-     puts "3333"
      stored_location_for(resource_or_scope) || super
    end
 
-   def after_sign_out_path_for(resource_or_scope)
-     puts "4444"
+   def after_sign_out_path_for(resource_or_scope)     
      request.referrer || super
    end
 

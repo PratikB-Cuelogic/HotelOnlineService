@@ -58,9 +58,17 @@ nav .brand-logo {
 
 .notice{
 	text-align: center;
-    width: 15%;
+    width: 20%;
     margin: auto;
     background-color: #e5ffdab8;
+    border-radius: 20px;
+}
+
+.alert{
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    background-color: #ffe6e6;
     border-radius: 20px;
 }
 

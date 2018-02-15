@@ -1,5 +1,6 @@
-<div class="container" style="padding-top: 4%">
+<div class="container">
 	<h3>Listing Rooms</h3>
+	<%= form_for :booking, url: 'search_list', method: "get" do |f| %>
 	<table>
 	<tr>
 	<th> Id  </th>
@@ -15,12 +16,17 @@
 			<td><%= a.description %></td>
 			<td><%= a.no_of_bedroom %></td>
 			<!-- <td><%= check_box_tag 'room_select[]', a.id , false %></td> -->
-			<td><%=check_box("room_select", "", {}, a.id, "no") %>
+			<!-- <td><%= check_box("room_select", "", {}, a.id)%></td> -->
+			<td><%= check_box("room_select", a.id)%></td>
+
+			
 			</tr>
 		<% end %>
 	<% end %>
 	</table>
+	<!-- <input type="submit" value="Book Rooms"> -->
+	<%= f.submit "Book Rooms" %>
+	<% end %>	
 	<%= paginate @rooms_page %>
-	<button><a href="/search/search_list">Book Rooms</a></button>
 </div>
 <br>
