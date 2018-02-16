@@ -1,31 +1,25 @@
 <div class="container">
 	<h3>Listing Rooms</h3>
-	<%= form_for :booking, url: 'search_list', method: "get" do |f| %>
-	<table>
+	<%= form_for :booking, url: room_booking_confirmation_path, method: "get" do |f| %>
+	<table  style="width: 80%">
 	<tr>
-	<th> Id  </th>
-	<th> Price  </th>
+	<th></th>
+	<th> Price</th>
 	<th> Room Description  </th>
 	<th> No Of Bedroom </th>
 	</tr>
 	<% cache do %>
 		<% @rooms_page.each do |a|%>
 			<tr>
-			<td><%= a.id %></td>
-			<td><%= a.price.to_i %></td>
-			<td><%= a.description %></td>
-			<td><%= a.no_of_bedroom %></td>
-			<!-- <td><%= check_box_tag 'room_select[]', a.id , false %></td> -->
-			<!-- <td><%= check_box("room_select", "", {}, a.id)%></td> -->
-			<td><%= check_box("room_select", a.id)%></td>
-
-			
+				<td style="padding-top: 0.5%"><%= check_box("room_select", a.id)%></td>
+				<td><%= a.price.to_i %></td>
+				<td><%= a.description %></td>
+				<td><%= a.no_of_bedroom %></td>						
 			</tr>
 		<% end %>
 	<% end %>
 	</table>
-	<!-- <input type="submit" value="Book Rooms"> -->
-	<%= f.submit "Book Rooms" %>
+	<%= f.submit "Place Booking" %>
 	<% end %>	
 	<%= paginate @rooms_page %>
 </div>

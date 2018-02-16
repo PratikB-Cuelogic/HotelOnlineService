@@ -16,7 +16,7 @@ class SearchService
 
   def search_available_hotels
     r = search_room_booked
-    h = Hotel.joins(:rooms).name_state_city(@params[:name_or_state_or_city]).room_inactive.room_id_not(r).uniq
+    h = Hotel.joins(:rooms).name_state_city(@params[:name_or_state_or_city]).room_inactive.room_id_not(r).room_count(@params[:roomSel]).uniq
   end
 
   def search_available_rooms hotel_id

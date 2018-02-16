@@ -1,6 +1,6 @@
 <div class="container">
 	<h1 class="hotel-title">Book on India's Largest Hotel Network</h1>
-	<%= form_for :search, url: '/search/search', method: "get" do |f| %>
+	<%= form_for :search, url: hotels_search_path, method: "get" do |f| %>
 		<div class="search">
 			<div class="section-1" >
 				<ul class="clearfix" >
@@ -27,7 +27,7 @@
 					</li>
 					<li class="value-5">
 						<%= label_tag :rooms, "Rooms", :class => 'search-content' %>
-						<%= select_tag 'search[roomSel]', options_for_select([]), :required => true%>		
+						<%= select_tag 'search[roomSel]', options_for_select(["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"]), :required => true%>		
 					   <div id="error-div" class="warning">
 					   		<label >Can't be Empty</label>
 					   </div>								

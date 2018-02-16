@@ -11,11 +11,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: update_attrs
   end
 
-=begin  def after_sign_in_path_for(resource)
-    puts "fsdfsdf"
-    request.env['omniauth.origin'] || stored_location_for(resource) || home_index_url
-  end
-=end
   private
     def storable_location?
       request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
@@ -26,7 +21,8 @@ class ApplicationController < ActionController::Base
     end
 
    def after_sign_in_path_for(resource_or_scope)
-     stored_location_for(resource_or_scope) || super
+     session[:member] = current_member.id
+     stored_location_for(resource_or_scope) || super     
    end
 
    def after_sign_out_path_for(resource_or_scope)     

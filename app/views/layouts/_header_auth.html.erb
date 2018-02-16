@@ -8,8 +8,10 @@
       </a>
         <ul id="nav-mobile" class="right">
           <% if member_signed_in? %>
+        <li class="nav-link"><a href="/">Home</a></li>          
     		<li class="nav-link"><%= link_to "Log out", destroy_member_session_path, :method => :delete  %></li>
     		<li class="nav-link"><%= link_to "Edit Profile", edit_member_registration_path %></li>
+        <li class="nav-link"><%= link_to "Booking Details", booking_details_path %></li>
       <%else%>
         <li class="nav-link"><a href="/">Home</a></li>
     		<li class="nav-link"><a href="/members/sign_up">Registration</a></li>
