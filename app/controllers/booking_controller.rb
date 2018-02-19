@@ -8,16 +8,20 @@ class BookingController < ApplicationController
   end
 
   def create  	
-  	#session[:member] = current_member.id
-  	params = { :room_select => session[:rooms_details], :checkin => session[:checkin], :checkout => session[:checkout], :member => session[:member]}
-  	@booking = BookService.new params
-  	if @booking.check_room_booking 	
-		flash[:alert] = "Booking has been Done already"
-		redirect_to '/home/index'  	
-	else
-  	 	flash[:notice] = "Booking Done"
-  		redirect_to '/home/index'  	
-	end  		  	
+    #session[:member] = current_member.id
+  	if current_member.nil?
+		  flash[:alert] = "Member is not logged in and booking has been done already"
+		  redirect_to '/home/index'  	
+	  else
+	  	params = { :room_select => session[:rooms_details], :checkin => session[:checkin], :checkout => session[:checkout], :member => session[:member]}
+	  	@booking = BookService.new params
+	  	if @booking.check_room_booking_availability
+		  	flash[:alert] = "Booking has been done already"
+		  else
+  	  	flash[:notice] = "Booking Done"
+		  end  		  	
+      redirect_to '/home/index'
+    end
   end
 
   def details

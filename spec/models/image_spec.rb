@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Image, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "Associations" do
+    it "belongs to either hotel or room" do
+      assc = described_class.reflect_on_association(:imageable)
+      expect(assc.macro).to eq :belongs_to
+    end
+  end
 end

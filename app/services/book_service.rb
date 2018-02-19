@@ -9,7 +9,6 @@ class BookService
     room_id = []
     @params[:room_select].each do |key, value|
       if value != 0.to_s
-        #@result = Room.id(key).uniq     
         room_id << key
       end     
     end
@@ -31,33 +30,27 @@ class BookService
   	@hotel_details
   end
 
-  def get_member_booking_details(member_id, booking_details_params)
-    if booking_details_params.nil?
-      @bookingRecords=Member.find(member_id).bookings.where(date: Date.today)  
-    else
-      @bookingRecords=Member.find(member_id).bookings.where(date: booking_details_params[:date])
-    end
-    puts @bookingRecords.inspect
-    @bookingRecords
-  end
-
-  def get_booking_details
+  def get_booking_details_booked
     booking = Room.checkin_checkout_eq(@params[:checkin], @params[:checkout])
     booking_details = booking.to_a
   end
 
-  def check_room_booking  
-    room_booked = selected_room_booking_details
-    verify_room_booked = get_booking_details 
+  def check_room_booking_availability
+    room_booked_details = selected_room_booking_details
+    verify_room_booked_details = get_booking_details_booked
     p = true
-    if room_booked.all?{|z| verify_room_booked.include?(z)}
+    if room_booked_details.all?{|z| verify_room_booked_details.include?(z)}
       p = true
     else
       p = false
+      create_booking room_booked_details
+      return p
+    end
+  end
+
+  def create_booking room_booked_details
       @book = Booking.create(date: Date.today, checkin: @params[:checkin], checkout: @params[:checkout], member_id: @params[:member])
       @book.rooms << room_booked
-    end
-    p
   end
 
 end

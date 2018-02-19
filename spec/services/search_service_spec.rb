@@ -1,14 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe SearchService do
+RSpec.describe SearchService, type: :services do
 
-  #subject { described_class.new() }
-
-  describe 'by state' do
-    context 'when state is present' do
+  let (:params) { { checkinSel: '2018-04-18', checkoutSel: '2018-04-19', name_or_state_or_city: 'S', roomSel: '1'} }
+  describe 'by name_or_state_city' do
+    context 'when any of this is present' do
       context 'and when room is available on the given check-in check-out date' do
         it ' returns hotel list' do
-          
+          r = Room.select("id").checkin_checkout(params[:checkinSel],params[:checkoutSel])
+          h = Hotel.joins(:rooms).name_state_city(params[:name_or_state_or_city]).room_inactive.room_id_not(r).room_count(params[:roomSel]).uniq
+          expect(h).not_to eq nil
         end
       end
       context 'and when room is not available on the given check-in check-out date' do
