@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h4>Hello <%= @member.firstname %>&nbsp;<%= @member.lastname %></h4>
+    <p>
+        Your Booking has been done Successfully.
+    </p>
+    <p>
+       	Booking Details:    	
+    </p>
+    <label><span><b>Hotel Name: </b><%= @hotel.name %></span></label><br>
+    <label><span><b>Hotel address: </b><%= @hotel.location %>,&nbsp;<%= @hotel.state %>,&nbsp;<%= @hotel.city %></span></label><br>
+    <label><span><b>No of Rooms: </b></span><%= @count %></label><br>
+    <label><span><b>Booking Date: </b><%= @booking.date %></span></label><br>
+	<label><span><b>Checkin: </b><%= @booking.checkin %></span></label><br>
+	<label><span><b>Checkin: </b><%= @booking.checkout %></span></label><br>
+	<label><span><b>Total Price: </b><%= @price %></span></label><br>
+    <p>
+      Thanks for Booking. Welcome again <a href="http://localhost:3000">click here</a>
+    </p>
+
+  </body>
+</html>

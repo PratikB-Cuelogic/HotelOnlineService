@@ -9,7 +9,7 @@ job_type :runner,  "cd :path && bin/rails runner -e development ':task' :output"
 set :output, "#{path}/log/cron.log"
 #
 every 1.minute do
-  command "ls"
+#  command "ls"
   runner "Room.delete_inactive_rooms"
 end
 #

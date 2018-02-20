@@ -51,6 +51,15 @@ class BookService
   def create_booking room_booked_details
       @book = Booking.create(date: Date.today, checkin: @params[:checkin], checkout: @params[:checkout], member_id: @params[:member])
       @book.rooms << room_booked_details
+      puts "aas"
+      if @book.save
+        send_booking_mail @book
+      end
+      puts "saaa"
+  end
+
+  def send_booking_mail booking
+    MemberMailer.booking_email(booking).deliver_now
   end
 
 end
