@@ -28,31 +28,31 @@ RSpec.describe Room, type: :model do
     it "is valid with all valid attributes" do
       room.hotel_id= hotel.id
       room.save
-      expect(subject).to be_valid
+      expect(room).to be_valid
     end
 
     it "is not valid without a price" do
-      subject.price = nil
-      subject.save      
-      expect(subject.errors.messages[:price][0]).to eql("can't be blank")
+      room.price = nil
+      room.save      
+      expect(room.errors.messages[:price][0]).to eql("can't be blank")
     end
 
     it "is not valid if value of price is less than 0" do
-      subject.price = 0.8
-      subject.save      
-      expect(subject.errors.messages[:price][0]).to eql("should be between 1 and 99999.")
+      room.price = 0.8
+      room.save      
+      expect(room.errors.messages[:price][0]).to eql("should be between 1 and 99999.")
     end
 
     it "is not valid if value of price is greater than 99999" do
-      subject.price = 999991
-      subject.save      
-      expect(subject.errors.messages[:price][0]).to eql("should be between 1 and 99999.")
+      room.price = 999991
+      room.save      
+      expect(room.errors.messages[:price][0]).to eql("should be between 1 and 99999.")
     end    
 
     it "is not valid if no. of bedrooms is nil" do
-      subject.no_of_bedroom = nil
-      subject.save      
-      expect(subject.errors.messages[:no_of_bedroom][0]).to eql("can't be blank")
+      room.no_of_bedroom = nil
+      room.save      
+      expect(room.errors.messages[:no_of_bedroom][0]).to eql("can't be blank")
     end 
   end
 end
