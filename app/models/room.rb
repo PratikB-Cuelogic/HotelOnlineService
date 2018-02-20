@@ -1,4 +1,6 @@
 class Room < ApplicationRecord
+#this model maintain all the room records and it corresponding associations
+
   has_and_belongs_to_many :bookings, :join_table => :bookings_rooms, dependent: :destroy
   belongs_to :hotel
   has_many :images, as: :imageable, dependent: :destroy
