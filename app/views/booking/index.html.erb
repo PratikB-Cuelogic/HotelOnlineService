@@ -1,9 +1,10 @@
 <% if member_signed_in? %>
 <div class="container">
 <h4>Booking Rooms Confirmation </h4>
-<h5>Hotel Details </h5>
+<div class="hotel_box">
+	<h5>Hotel Details </h5>
 	<%= form_for :booking, url: room_booked_path, method: "get" do |f| %>	
-		<table style="text-align: center;">
+		<table class="application_table">
 			<tr>
 			<th> Hotel Name </th>
 			<th> State  </th>
@@ -19,29 +20,35 @@
 				</tr>
 			<% end %>
 		</table>	
-		<h5>Rooms Details </h5>
-		<table style="text-align: center;">
-		<tr>
-		<th style="width: 30%"> Room Description  </th>
-		<th style="width: 20%"> No Of Bedroom </th>
-		<th> Price  </th>
-		</tr>
-		<% cache do %>
-			<% @rooms_details.each do |details|%>
-					<tr>
-					<td><%= details.description %></td>
-					<td><%= details.no_of_bedroom %></td>
-					<td><%= details.price.to_i %></td>
-					</tr>				
-			<% end %>		
-		<tr>
-			<th> Total </th>
-			<th></th>
-			<td><%= @booking_price %></td>
-		</tr>
-		<% end %>
-		</table>
+</div>
+<div class="room_box"  style="box-shadow: 2px 0px 15px #000">
+	<h5>Rooms Details </h5>
+	<table class="application_table">
+	<tr>
+	<th> Room Description  </th>
+	<th> No Of Bedroom </th>
+	<th> Price  </th>
+	</tr>
+	<% cache do %>
+		<% @rooms_details.each do |details|%>
+				<tr>
+				<td><%= details.description %></td>
+				<td><%= details.no_of_bedroom %></td>
+				<td><%= details.price.to_i %></td>
+				</tr>				
+		<% end %>		
+	<tr>
+		<th> Total </th>
+		<th></th>
+		<td><b><%= @booking_price %></b></td>
+	</tr>
+	<% end %>
+	</table>
+	<div class="room_button">
 		<%= f.submit "Book Rooms", data: { confirm: 'Confirm?' } %>
+		<%= link_to 'Cancel', home_index_path, data: { confirm: 'Are you Sure?' } %>
+	</div>
+</div>
 	<% end %>
 </div>
 <br>

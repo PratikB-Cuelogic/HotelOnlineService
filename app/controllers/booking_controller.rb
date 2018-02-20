@@ -27,6 +27,6 @@ class BookingController < ApplicationController
   def details
   	@q = Booking.ransack(params[:q])
   	@result = @q.result(distinct: true).where(member_id: session[:member])
-  	@details_result = Kaminari.paginate_array(@result).page(params[:page]).per(2)
+  	@details_result = Kaminari.paginate_array(@result).page(params[:page]).per(3)
   end
 end

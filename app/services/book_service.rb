@@ -6,7 +6,7 @@ class BookService
   end
 
   def selected_room_booking_details
-    room_id = []
+    room_id = []    
     @params[:room_select].each do |key, value|
       if value != 0.to_s
         room_id << key
@@ -50,7 +50,7 @@ class BookService
 
   def create_booking room_booked_details
       @book = Booking.create(date: Date.today, checkin: @params[:checkin], checkout: @params[:checkout], member_id: @params[:member])
-      @book.rooms << room_booked
+      @book.rooms << room_booked_details
   end
 
 end

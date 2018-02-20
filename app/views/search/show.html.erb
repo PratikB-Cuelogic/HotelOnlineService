@@ -1,26 +1,30 @@
 <div class="container">
-	<h3>Listing Rooms</h3>
-	<%= form_for :booking, url: room_booking_confirmation_path, method: "get" do |f| %>
-	<table  style="width: 80%">
-	<tr>
-	<th></th>
-	<th> Price</th>
-	<th> Room Description  </th>
-	<th> No Of Bedroom </th>
-	</tr>
-	<% cache do %>
-		<% @rooms_page.each do |a|%>
-			<tr>
-				<td style="padding-top: 0.5%"><%= check_box("room_select", a.id)%></td>
-				<td><%= a.price.to_i %></td>
-				<td><%= a.description %></td>
-				<td><%= a.no_of_bedroom %></td>						
-			</tr>
+	<div class="hotel_box">
+		<h3>Listing Rooms</h3>
+		<%= form_for :booking, url: room_booking_confirmation_path, method: "get" do |f| %>
+		<table  class="application_table">
+		<tr>
+		<th></th>
+		<th> Price</th>
+		<th> Room Description  </th>
+		<th> No Of Bedroom </th>
+		</tr>
+		<% cache do %>
+			<% @rooms_page.each do |a|%>
+				<tr>
+					<td style="padding-top: 0.5%"><%= check_box("room_select", a.id)%></td>
+					<td><%= a.price.to_i %></td>
+					<td><%= a.description %></td>
+					<td><%= a.no_of_bedroom %></td>						
+				</tr>
+			<% end %>
 		<% end %>
-	<% end %>
-	</table>
-	<%= f.submit "Place Booking" %>
-	<% end %>	
-	<%= paginate @rooms_page %>
+		</table>
+		<div class="room_button">
+			<%= f.submit "Place Booking"%>
+		</div>
+	</div>
+		<% end %>	
+		<%= paginate @rooms_page %>
 </div>
 <br>

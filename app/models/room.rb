@@ -1,5 +1,5 @@
 class Room < ApplicationRecord
-  has_and_belongs_to_many :bookings, :join_table => :bookings_rooms
+  has_and_belongs_to_many :bookings, :join_table => :bookings_rooms, dependent: :destroy
   belongs_to :hotel
   has_many :images, as: :imageable, dependent: :destroy
   validates :price, presence: true,  numericality: { :greater_than_or_equal_to => 1,
@@ -18,4 +18,9 @@ class Room < ApplicationRecord
   scope :booking_date, -> (date){ joins(:bookings).where("bookings.date = ? ", "#{date}" ) }
   scope :booking_member_id, -> (member_id){ where("bookings.member_id = ? ", "#{member_id}" ) }
   scope :checkin_checkout_eq, -> (checkin, checkout){ joins(:bookings).where("bookings.checkin = ? AND bookings.checkout = ? ", "#{checkin}" , "#{checkout}") }
+
+
+  def self.delete_inactive_rooms
+    Room.where("inactive IS NOT NULL AND inactive < NOW() - INTERVAL '30 DAY'").destroy_all
+  end
 end

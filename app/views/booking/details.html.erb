@@ -1,25 +1,30 @@
 <div class="container">
 
-<div style="float: left;width: 30%;margin-right: 5%;">
-<% if member_signed_in? %>
-
-<%= search_form_for @q, url: booking_details_path, method: "get" do |f| %>
-  <div>
-  	<%= f.label :date_eq, "Booking Date" %>
-  	<%= f.date_field :date_eq %>
-  </div>
-  <div style="margin-bottom: 10px">
-  	<%= f.label :rooms_hotel_name_eq, "Hotel Name" %>
-  	<%= select_tag("q[rooms_hotel_name_eq]",  options_from_collection_for_select(Hotel.all, "name", "name"))%>
-  </div>
-  <%= f.submit %>
-<% end %>
+<div class="details" style="width: 30%">
+	<div class="details_left_box">
+		<% if member_signed_in? %>
+		<%= search_form_for @q, url: booking_details_path, method: "get" do |f| %>
+		  <div>
+		  	<%= f.label :date_eq, "Booking Date" %>
+		  	<%= f.date_field :date_eq %>
+		  </div>
+		  <div style="margin-bottom: 10px">
+		  	<%= f.label :rooms_hotel_name_eq, "Hotel Name" %>
+		  	<%= select_tag("q[rooms_hotel_name_eq]",  options_from_collection_for_select(Hotel.all, "name", "name"))%>
+		  </div>
+		  <div class="room_button">
+		  	<%= f.submit %>
+		  </div>
+		<% end %>
+	</div>
 </div>
-<div style="float: left; width: 60%;margin-right: 5%;">
+
+<div class="details" style="width: 60%;">
 	<% if @details_result.empty? %>
 	<h6>No Bookings done yet</h6>
-	<% else %>
-		<table  style="width: 80%">
+	<% else %>	
+	<div class="details_left_box">	
+		<table class="application_table">
 		<tr>
 		<th> Booking Date</th>
 		<th> Checkin  </th>
@@ -35,6 +40,7 @@
 			<% end %>
 		<% end %>
 		</table>
+	</div>
 	<% end %>
 	<%= paginate @details_result %>	
 </div>

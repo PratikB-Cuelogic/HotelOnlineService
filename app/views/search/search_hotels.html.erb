@@ -1,33 +1,35 @@
 
 <div class="container" style="padding-top: 4%">
-    <% if @res.empty? %>
-		<div class="hotel_list">
-			<span>Sorry, Hotels Not found</span>
-		</div>
-    <% else %>		
-		<h3>Listing Hotels</h3>
-		<table style="text-align: center;">
-		<tr>
-		<th> Hotel Name </th>
-		<th> State  </th>
-		<th> City  </th>
-		<th> Address  </th>
-		<th> Description  </th>
-		</tr>
-		<% cache @res do %>
-			<% @res.each do |a|%>
-				<tr>
-				<td><%= a.name %></td>
-				<td><%= a.state %></td>
-				<td><%= a.city %></td>
-				<td><%= a.location %></td>
-				<td><%= a.description %></td>
-				<td><%= link_to 'Show', search_path(a) %></td>
-				</tr>
+	    <% if @res.empty? %>
+			<div class="hotel_list">
+				<span>Sorry, Hotels Not found</span>
+			</div>
+	    <% else %>		
+	<div class="hotel_box">	    
+			<h3>Listing Hotels</h3>
+			<table class="application_table">
+			<tr>
+			<th> Hotel Name </th>
+			<th> State  </th>
+			<th> City  </th>
+			<th> Address  </th>
+			<th> Description  </th>
+			</tr>
+			<% cache @res do %>
+				<% @res.each do |a|%>
+					<tr>
+					<td><%= a.name %></td>
+					<td><%= a.state %></td>
+					<td><%= a.city %></td>
+					<td><%= a.location %></td>
+					<td><%= a.description %></td>
+					<td><%= link_to 'Show', search_path(a) %></td>
+					</tr>
+				<% end %>
 			<% end %>
-		<% end %>
-		</table>
-		<%= paginate @res %>
-	<% end%>
+			</table>
+	</div>
+			<%= paginate @res %>
+		<% end%>
 </div>
 <br>
