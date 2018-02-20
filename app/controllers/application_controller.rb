@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
       puts resource_or_scope.inspect
     if member_signed_in?
       puts "3333"    
+      CustomLogger.login_log current_member
       session[:member] = current_member.id
       puts session[:member]
       stored_location_for(resource_or_scope) || super     

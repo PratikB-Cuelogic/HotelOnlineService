@@ -32,19 +32,19 @@ ActiveAdmin.register Room do
 
     def create
       @room = Room.create(room_params)
-      if @room.update_attributes(room_images_params)
-        redirect_to [:admin, @room]
-      else
-        render 'new'
-      end
+      room_redirect @room
     end
     
     def update
-      @room = Room.find(params[:id])           
-      if @room.update_attributes(room_images_params)
+      @room = show
+      room_redirect @room
+    end
+
+    def room_redirect room
+      if room.update_attributes(room_images_params)
         redirect_to [:admin, @room]
       else
-        render 'edit'
+        render 'new'
       end
     end
 
