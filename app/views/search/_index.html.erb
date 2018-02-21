@@ -13,14 +13,14 @@
 					</li>
 					<li class="value-3">
 						<%= label_tag :check_in, "Check in", :class => 'search-content' %>
-						<%= date_field :search, :checkinSel , :class => 'datepicker', :required => true, :min => Date.today, :value => Date.today %>
+						<%= date_field :search, :checkinSel , :required => true, :min => Date.today, :value => Date.today %>
 					   <div id="error-div" class="warning">
 					   		<label >Can't be Empty</label>
 					   </div>
 					</li>
 					<li class="value-4">
 						<%= label_tag :check_out, "Check out", :class => 'search-content' %>
-						<%= date_field :search, :checkoutSel , :class => 'datepicker', :required => true, :min => Date.today+1, :value => Date.today+1  %>
+						<%= date_field :search, :checkoutSel , :required => true, :min => Date.today+1, :value => Date.today+1  %>
 					   <div id="error-div" class="warning">
 					   		<label >Can't be Empty</label>
 					   </div>
