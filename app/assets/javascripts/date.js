@@ -1,10 +1,6 @@
 window.onload = function () {
 	
-	//Get html elements
-	var checkinSel = document.getElementById("search_checkinSel");	
-
-	
-	//City Changed
+	//Checkin Changed
 	document.getElementById("search_checkinSel").onchange = function () {
 		var today = new Date(checkinSel.value);
 		var tomorrow = new Date(today);
