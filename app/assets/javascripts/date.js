@@ -18,5 +18,6 @@ window.onload = function () {
 		{month = '0'+ month}	
 		var to = year + "-" + month + "-" + day;
 		document.getElementById("search_checkoutSel").setAttribute("min", to);
+		document.getElementById('search_checkoutSel').value = to;
 	}
 }
