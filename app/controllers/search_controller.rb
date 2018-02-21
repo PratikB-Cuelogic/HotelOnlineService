@@ -9,7 +9,7 @@ class SearchController < ApplicationController
     set_session room_params
     @search = initialize_search_service room_params
     @result = @search.search_by_all
-    @res = Kaminari.paginate_array(@result).page(params[:page]).per(1)
+    @res = Kaminari.paginate_array(@result).page(params[:page]).per(2)
   end
 
   def search_list

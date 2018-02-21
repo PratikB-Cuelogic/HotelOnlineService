@@ -1,6 +1,6 @@
 <% if member_signed_in? %>
 <div class="container">
-<h4>Booking Rooms Confirmation </h4>
+<h4 style="margin-left: 20px">Booking Rooms Confirmation </h4>
 <div class="hotel_box">
 	<h5>Hotel Details </h5>
 	<%= form_for :booking, url: room_booked_path do |f| %>	
@@ -20,8 +20,8 @@
 				</tr>
 			<% end %>
 		</table>	
-</div>
-<div class="room_box"  style="box-shadow: 2px 0px 15px #000">
+</div><br>
+<div class="room_box">
 	<h5>Rooms Details </h5>
 	<table class="application_table">
 	<tr>

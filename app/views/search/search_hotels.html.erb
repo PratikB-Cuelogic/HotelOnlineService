@@ -6,9 +6,9 @@
 			</div>
 	    <% else %>		
 	<div class="hotel_box">	    
-			<h3>Listing Hotels</h3>
+			<h5 style="margin-left: 20px">Listing Hotels</h5>
 			<table class="application_table">
-			<tr>
+			<tr style="border-bottom: 1px solid">
 			<th> Hotel Name </th>
 			<th> State  </th>
 			<th> City  </th>
@@ -17,13 +17,12 @@
 			</tr>
 			<% cache @res do %>
 				<% @res.each do |a|%>
-					<tr>
+					<tr class="table_details" onclick = "window.location.href = '<%= search_path(a) %>'"">
 					<td><%= a.name %></td>
 					<td><%= a.state %></td>
 					<td><%= a.city %></td>
 					<td><%= a.location %></td>
 					<td><%= a.description %></td>
-					<td><%= link_to 'Show', search_path(a) %></td>
 					</tr>
 				<% end %>
 			<% end %>

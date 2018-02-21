@@ -268,18 +268,38 @@ input[type="checkbox"]:not(:checked),input[type="checkbox"]:checked{
     pointer-events: visible;
 }
 
-.hotel_box{
+/*.hotel_box{
     padding: 1.5%;
     background: #fffffe;
     border-radius: 20px;
+}*/
+
+.hotel_box {
+    width: 85%;
+    margin: auto;
+    padding: 1%;
+    background: #fffffe;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #0000009c;
 }
 
-.room_box{
+.room_box {
+    width: 85%;
+    margin: auto;
+    padding: 1%;
+    background: #ecddd4;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #0000009c;
+}
+
+
+/*.room_box{
     margin-top: 20px;
     padding: 1.5%;
     background: #ecddd4;
     border-radius: 20px;
 }
+*/
 
 
 .room_button{
@@ -297,9 +317,9 @@ input[type="checkbox"]:not(:checked),input[type="checkbox"]:checked{
 .details_left_box{
     padding: 6.5%;
     background: #fffffe;
-    border-radius: 10px;
+    border-radius: 5px;
     color: #e8e8e7;
-    box-shadow: 2px 0px 15px #000
+    box-shadow: 2px 0px 15px #0000009c;
 }
 
 .details{
@@ -307,6 +327,22 @@ input[type="checkbox"]:not(:checked),input[type="checkbox"]:checked{
     margin-right: 5%;
 }
 
+
+
 label,#q_date_eq,#q_rooms_hotel_name_eq{
     color: #000;
+}
+
+.table_details:hover{
+ background-color: #00000014;   
+  cursor: pointer;
+}
+
+
+table.application_table tbody tr th,table.application_table tbody tr td{
+    text-align: center;
+}
+
+table.application_table tbody tr th{
+    border-bottom: 1px solid
 }
