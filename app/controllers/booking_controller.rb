@@ -29,4 +29,11 @@ class BookingController < ApplicationController
   	@result = @q.result(distinct: true).where(member_id: session[:member]) 
   	@details_result = Kaminari.paginate_array(@result).page(params[:page]).per(3)
   end
+
+    def destroy
+      @booking=Booking.find(params[:id])
+      @booking.destroy
+      flash[:notice] = "Your Booking has been Cancelled"
+      redirect_to booking_details_path
+    end
 end

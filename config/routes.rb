@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :search  
   resources :booking
   
-  get 'room_booked', to: 'booking#create'
+  post 'room_booked', to: 'booking#create'
   get 'booking_details',   to: 'booking#details'
   get 'home/index'
   get 'hotels_search',   to: 'search#search_hotels'
