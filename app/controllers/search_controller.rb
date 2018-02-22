@@ -1,5 +1,4 @@
 class SearchController < ApplicationController
-  caches_page :index, :show 
   def set_cache params
     Rails.cache.write("checkout",params[:checkoutSel])
     Rails.cache.write("checkin",params[:checkinSel])
