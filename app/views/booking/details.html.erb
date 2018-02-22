@@ -30,13 +30,13 @@
 		<th> <%= sort_link(@q, :checkin, 'Checkin', default_order: :desc) %>  </th>
 		<th> Checkout </th>
 		</tr>
-		<% cache do %>
+		<% cache @details_result do %>
 			<% @details_result.each do |booking| %>
 				<tr>
 					<td><%=booking.date%></td>
 					<td><%= booking.checkin%></td>
 					<td><%= booking.checkout%></td>
-					<% if booking.checkin > Date.today%>
+					<% if booking.checkin >= Date.today%>
 					<td> <%= link_to 'Cancel Booking', booking_path(booking) ,method: :delete , data: { confirm: 'Are you Sure ?' } %> </td>
 					<% end %>						
 				</tr>

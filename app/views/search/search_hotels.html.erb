@@ -17,7 +17,7 @@
 			</tr>
 			<% cache @res do %>
 				<% @res.each do |a|%>
-					<tr class="table_details" onclick = "window.location.href = '<%= search_path(a) %>'"">
+					<tr class="table_details" onclick = "window.location.href = '<%= search_path(a) %>'">
 					<td><%= a.name %></td>
 					<td><%= a.state %></td>
 					<td><%= a.city %></td>

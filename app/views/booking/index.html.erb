@@ -3,7 +3,7 @@
 <h4 style="margin-left: 20px">Booking Rooms Confirmation </h4>
 <div class="hotel_box">
 	<h5>Hotel Details </h5>
-	<%= form_for :booking, url: room_booked_path do |f| %>	
+	<%= form_for :booking, url: room_booked_path do |f| %>
 		<table class="application_table">
 			<tr>
 			<th> Hotel Name </th>
@@ -11,13 +11,15 @@
 			<th> City  </th>
 			<th> Address  </th>
 			</tr>
-			<% @hotel_details.each do |a|%>
-				<tr>
-				<td><%= a.name %></td>
-				<td><%= a.state %></td>
-				<td><%= a.city %></td>
-				<td><%= a.location %></td>
-				</tr>
+			<% cache @hotel_details do %>
+				<% @hotel_details.each do |a|%>
+					<tr>
+					<td><%= a.name %></td>
+					<td><%= a.state %></td>
+					<td><%= a.city %></td>
+					<td><%= a.location %></td>
+					</tr>
+				<% end %>
 			<% end %>
 		</table>	
 </div><br>
@@ -29,7 +31,7 @@
 	<th> No Of Bedroom </th>
 	<th> Price  </th>
 	</tr>
-	<% cache do %>
+	<% cache @rooms_details do %>
 		<% @rooms_details.each do |details|%>
 				<tr>
 				<td><%= details.description %></td>
@@ -38,15 +40,15 @@
 				</tr>				
 		<% end %>		
 	<tr>
-		<th> Total </th>
-		<th></th>
+		<td><b>Total</b></td>
+		<td></td>
 		<td><b><%= @booking_price %></b></td>
 	</tr>
 	<% end %>
 	</table>
 	<div class="room_button">
 		<%= f.submit "Book Rooms", data: { confirm: 'Confirm?' } %>
-		<%= link_to 'Cancel', home_index_path, data: { confirm: 'Are you Sure?' } %>
+ 		<%= link_to 'Cancel', home_index_path, data: { confirm: 'Are you Sure?' } %>
 	</div>
 </div>
 	<% end %>

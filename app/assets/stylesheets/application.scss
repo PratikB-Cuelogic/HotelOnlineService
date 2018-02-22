@@ -116,6 +116,10 @@ select{
     padding-left: 5%;
 }
 
+#link{
+    color: #000;
+}
+
 option{
 	padding: 1%;
 }
@@ -345,4 +349,8 @@ table.application_table tbody tr th,table.application_table tbody tr td{
 
 table.application_table tbody tr th{
     border-bottom: 1px solid
+}
+
+input[type="submit"] {
+    padding: 0.4% 0.55%;
 }

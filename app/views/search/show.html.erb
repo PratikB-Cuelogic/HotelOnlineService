@@ -9,7 +9,7 @@
 		<th> Room Description  </th>
 		<th> No Of Bedroom </th>
 		</tr>
-		<% cache do %>
+		<% cache @rooms_page do %>
 			<% @rooms_page.each do |a|%>
 				<tr>
 					<td style="padding-top: 0.5%"><%= check_box("room_select", a.id)%></td>
