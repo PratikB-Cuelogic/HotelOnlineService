@@ -270,6 +270,7 @@ input::-webkit-calendar-picker-indicator {  }
 input[type="checkbox"]:not(:checked),input[type="checkbox"]:checked{
     opacity: 1;
     pointer-events: visible;
+    cursor: pointer;
 }
 
 /*.hotel_box{
