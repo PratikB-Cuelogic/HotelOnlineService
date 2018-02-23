@@ -21,9 +21,9 @@ RSpec.describe SearchService do
   	end
     context 'when any of this is not present' do
       it ' returns empty array' do
-          result = SearchService.search_by_all params2
-          expect(result.empty?).to eq true
-        end
+        result = SearchService.search_by_all params2
+        expect(result.empty?).to eq true
+      end
     end    
   end
 end

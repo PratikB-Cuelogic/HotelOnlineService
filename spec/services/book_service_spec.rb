@@ -12,11 +12,11 @@ RSpec.describe BookService do
         end
       end
 	  context 'and if the room is booked on given checkin checkout date' do
-        it 'it returns true' do
-          b = BookService.check_room_booking_availability booking_done
-          expect(b).to eq true
-  	    end
-      end
+      it 'it returns true' do
+        b = BookService.check_room_booking_availability booking_done
+        expect(b).to eq true
+  	  end
+    end
     end
   end
 end
