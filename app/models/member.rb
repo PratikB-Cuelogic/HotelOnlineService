@@ -11,6 +11,4 @@ class Member < ApplicationRecord
   validates :firstname,:lastname, :presence => true, length: { in: 3..20 }, format: {with: name_regex, message: "contains only alphabets"}
   validates :mobile_no, :presence => true, format: {with: mobile_regex}
   validates :email,:presence => true, format:{ with: email_regex}
-  #validates :password, :presence => true
-  #validates :password_confirmation,:presence => true
 end

@@ -1,13 +1,7 @@
 ActiveAdmin.register Image do
 
-  #menu false
   actions :all, :except => :new
   permit_params :image,:imageable_type,:imageable_id,images_attributes: [:image]
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
 
   controller do
     before_action :find_attachable
@@ -23,8 +17,6 @@ ActiveAdmin.register Image do
       params.require(:images).permit(:image)
     end
   
-    # could be improve and include into concerns
-    # http://api.rubyonrails.org/classes/ActiveSupport/Concern.html
     def find_attachable
       params.each do |name, value|
         return @images = $1.classify.constantize.find(value) if name =~ /(.+)_id$/

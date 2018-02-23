@@ -51,12 +51,10 @@ ActiveAdmin.register Room do
     private
 
     def room_params
-      puts "1111"
       params.require(:room).permit(:price, :no_of_bedroom, :description, :inactive, :hotel_id)
     end
 
     def room_images_params
-      puts "222"
       params.require(:room).permit(:price, :no_of_bedroom, :description, :inactive, :hotel_id,images_attributes: [:id, :image, :image_cache, :_destroy])
     end
   end
@@ -70,9 +68,9 @@ ActiveAdmin.register Room do
  permit_params :price, :no_of_bedroom, :description, :inactive, :hotel_id
  form do |f|
     f.inputs do
-   # if f.object.new_record?
-      f.input :hotel_id, as: :select, multiple: false, collection: Hotel.all, new_record: true
-	#end
+    if f.object.new_record?
+      f.input :hotel_id, as: :select, multiple: false, collection: Hotel.all
+    end
       f.input :price
       f.input :no_of_bedroom, as: :select, multiple: false, collection: ['1','2','3']
       f.input :description

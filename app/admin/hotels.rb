@@ -5,9 +5,9 @@ ActiveAdmin.register Hotel do
       @hotel = Hotel.new
     end
     
-  def show
-    @hotel=Hotel.find(params[:id])
-  end
+    def show
+      @hotel=Hotel.find(params[:id])
+    end
 
     def create
       @hotel = Hotel.create(hotel_params)
@@ -30,25 +30,20 @@ ActiveAdmin.register Hotel do
     private
 
     def hotel_params
-      puts "1111"
       params.require(:hotel).permit(:name, :rating, :state, :city, :location, :description)
     end
 
     def hotel_images_params
-      puts "222"
       params.require(:hotel).permit(:name, :rating, :state, :city, :location, :description,images_attributes: [:id, :image, :image_cache, :_destroy])
     end
   end
-
-  #permit_params :name, :rating, :location, :description,images_attributes: [:image]
 
   filter :name
   filter :location
   filter :rating
   filter :created_at
   filter :updated_at
-  
-  
+    
   form  html: { multipart: true } do |f|
     f.inputs "New" do
       f.input :name
