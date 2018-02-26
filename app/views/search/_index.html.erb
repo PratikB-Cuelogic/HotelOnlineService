@@ -13,7 +13,7 @@
 					</li>
 					<li class="value-3">
 						<%= label_tag :check_in, "Check in", :class => 'search-content' %>
-						<%= date_field :search, :checkinSel , :required => true, :min => Date.today, :value => Date.today %>
+						<%= date_field :search, :checkinSel , :required => true, :min => Date.today, :value => Date.today, :onchange => 'setCheckinCheckoutDate()'%>
 					   <div id="error-div" class="warning">
 					   		<label >Can't be Empty</label>
 					   </div>
