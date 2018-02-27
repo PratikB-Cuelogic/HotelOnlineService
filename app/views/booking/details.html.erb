@@ -1,6 +1,6 @@
 <div class="container">
 
-<div class="details" style="width: 30%">
+<div class="details left" >
 	<div class="details_left_box">
 		<% if member_signed_in? %>
 		<%= search_form_for @q, url: booking_details_path, method: "get" do |f| %>
@@ -19,7 +19,7 @@
 	</div>
 </div>
 
-<div class="details" style="width: 60%;">
+<div class="details right1" >
 	<% if @details_result.empty? %>
 	<h6>No Bookings done yet</h6>
 	<% else %>	

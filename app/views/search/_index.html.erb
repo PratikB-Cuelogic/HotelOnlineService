@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container mobile-nav">
 	<h1 class="hotel-title">Book on India's Largest Hotel Network</h1>
 	<%= form_for :search, url: hotels_search_path, method: "get" do |f| %>
 		<div class="search">
 			<div class="section-1" >
 				<ul class="clearfix" >
-					<li class="value-1" style="width: 33.32%">
-					   <%= label_tag  :name_or_city_or_state_or_city, 'Hotel Name or State or City' %>
+					<li class="value-1">
+					   <%= label_tag  :name_or_city_or_state_or_city, 'Hotel Name or State or City', :class => 'search-content'  %>
 					   <%= text_field  :search, :name_or_state_or_city , :required => true, :placeholder => 'Gujrat / Vadodra / Subhash'%>
 					   <div id="error-div" class="warning">
 					   		<label >Can't be Empty</label>
@@ -32,9 +32,7 @@
 					   		<label >Can't be Empty</label>
 					   </div>								
 					</li>
-					<li class="value-6"><label class="search-content">
-					<input type="submit" value="search" class="search-button">
-					</label></li>
+					<li class="value-6"><input type="submit" value="search" class="search-button"></li>
 				</ul>
 			</div>
 	 	</div>
